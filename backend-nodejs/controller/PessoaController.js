@@ -1,11 +1,18 @@
 const PessoaService = require('../service/PessoaService');
 const asyncHandler = require('express-async-handler')
-// Classe responsável por expor o servidor para acesso de fora
-// Utiliza requisições REST que é basicamente mapeamento de URLs e tipos de requisições, geralmente as seguintes:
-//   GET: buscar alguma informação
-//   POST: incluir alguma informação
-//   PUT: alterar alguma informação
-//   DELETE: excluir alguma informação
+
+/* Classe responsável por fazer a comunicação externa ao servidor. Geralmente expondo uma API Rest.
+  Na grande maioria dos casos é comunicação com o frontend, mas pode ser outro servidor que esteja chamando
+  Recebe dados da requisição, envia pra service e devolve o resultado:
+  Banco de Dados < Repository < Service < CONTROLLER < Frontend
+  Banco de Dados > Repository > Service > CONTROLLER > Frontend
+
+ Utiliza requisições REST que é basicamente mapeamento de URLs e tipos de requisições, geralmente as seguintes:
+   GET: buscar alguma informação
+   POST: incluir alguma informação
+   PUT: alterar alguma informação
+   DELETE: excluir alguma informação
+*/
 function PessoaController(app){
 
   // Escuta requisições do tipo GET em /pessoas
